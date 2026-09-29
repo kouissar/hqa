@@ -1,16 +1,92 @@
-# React + Vite
+# AQUAONE SaaS Platform Mockup
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A highly responsive, Material Design-inspired UI mockup for **AQUAONE**—a healthcare payer QA platform. This application simulates a business-friendly claims testing journey, from requirement intake through to evidence, defects, and continuous integration.
 
-Currently, two official plugins are available:
+## 🚀 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The AQUAONE platform orchestrates and streamlines the complex workflows associated with healthcare claims testing. This mockup demonstrates the "End-to-End Product Workflow" designed for business users (QA Teams, Business Analysts, Test Leads, Product Teams, and Implementation Partners).
 
-## React Compiler
+### The 7-Step Testing Journey
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Plan**: Sync and view release, feature, and defect requirements directly from Jira alongside source documents.
+2. **Generate**: Leverage AI to automatically generate test scenarios, BDD feature files, and coverage reports.
+3. **Prepare**: Search, clone, edit, or synthesize claims and test data specifically designed for segment-level preparation.
+4. **Validate**: Perform rigorous checks on 837 structures, ensure HIPAA compliance, and validate payer-specific business rules.
+5. **Execute**: Submit claims through APIs, file drops, or queues to target adjudication platforms (e.g., Facets, QNXT).
+6. **Analyze**: Compare expected vs. actual financial outcomes and baseline results.
+7. **Evidence**: Access compliance dashboards, audit trails, defect logs, and reusable regression assets.
 
-## Expanding the Oxlint configuration
+## 🛠️ Technology Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **Framework**: [React](https://reactjs.org/) (scaffolded with [Vite](https://vitejs.dev/))
+- **Styling**: Custom, highly responsive Vanilla CSS (implementing modern Material Design principles, glassmorphism, and micro-animations)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+## 💻 Getting Started
+
+Follow these instructions to run the mockup locally on your machine.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/kouissar/hqa.git
+   cd hqa
+   ```
+
+2. Install the project dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to:
+   ```text
+   http://localhost:5173
+   ```
+
+## 🎨 Design System
+
+The application leverages a custom CSS design system (`src/index.css`) built to convey a premium, modern SaaS feel. It includes:
+- **Color Palette**: Deep Navy Blues, Vibrant Purples, Emeralds, and Slate accents mapped specifically to the 7-step journey.
+- **Typography**: Uses the `Inter` font family for clean, highly legible text.
+- **Animations**: Includes subtle `fade-in` and hover micro-animations for an interactive and dynamic user experience.
+
+## 📁 Project Structure
+
+```text
+hqa/
+├── public/                # Static assets
+├── src/
+│   ├── assets/            # Images and icons
+│   ├── components/
+│   │   └── views/         # The 7 workflow phase components
+│   │       ├── PlanView.jsx
+│   │       ├── GenerateView.jsx
+│   │       ├── PrepareView.jsx
+│   │       ├── ValidateView.jsx
+│   │       ├── ExecuteView.jsx
+│   │       ├── AnalyzeView.jsx
+│   │       └── EvidenceView.jsx
+│   ├── App.jsx            # Main layout and workflow stepper
+│   ├── index.css          # Global design system & utility classes
+│   └── main.jsx           # React entry point
+├── package.json
+└── README.md
+```
+
+## 🤝 Contributing
+
+This repository currently serves as an initial UI mockup for stakeholder review. As the project evolves into a fully functional MVP (focusing initially on HMO testing + initial connectors), further architectural guidelines will be provided.
+
+---
+*AQUAONE - Transforming Healthcare Payer Quality Assurance.*
