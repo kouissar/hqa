@@ -68,36 +68,36 @@ function App() {
           </p>
         </section>
 
-        {/* Workflow Stepper */}
-        <section className="workflow-stepper">
-          <div className="stepper-track"></div>
-          <div className="steps-container grid grid-cols-7 gap-4">
-            {WORKFLOW_STEPS.map((step, index) => {
-              const Icon = step.icon;
-              const isActive = activeStep === step.id;
-              return (
-                <div 
-                  key={step.id} 
-                  className={`step-item ${isActive ? 'active' : ''}`}
-                  onClick={() => setActiveStep(step.id)}
-                >
-                  <div 
-                    className="step-icon-wrapper flex items-center justify-center"
-                    style={{ 
-                      backgroundColor: isActive ? step.color : 'var(--color-surface)',
-                      borderColor: isActive ? step.color : 'var(--border-color)',
-                      color: isActive ? 'white' : step.color,
-                      boxShadow: isActive ? '0 0 15px ' + step.color + '40' : 'none'
+        {/* Workflow Tabs */}
+        <section className="workflow-tabs">
+          <div className="flex items-center justify-between border-b" style={{ borderColor: 'var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+            <div className="flex overflow-x-auto w-full">
+              {WORKFLOW_STEPS.map((step) => {
+                const Icon = step.icon;
+                const isActive = activeStep === step.id;
+                return (
+                  <button 
+                    key={step.id} 
+                    className={`tab-item flex items-center gap-2 ${isActive ? 'active' : ''}`}
+                    onClick={() => setActiveStep(step.id)}
+                    style={{
+                      padding: '1rem 1.5rem',
+                      borderBottom: isActive ? `3px solid ${step.color}` : '3px solid transparent',
+                      color: isActive ? step.color : 'var(--color-text-muted)',
+                      fontWeight: isActive ? '600' : '500',
+                      backgroundColor: isActive ? `${step.color}0A` : 'transparent',
+                      transition: 'all var(--transition-fast)',
+                      flex: 1,
+                      justifyContent: 'center',
+                      outline: 'none'
                     }}
                   >
-                    <span className="step-number">{index + 1}</span>
-                  </div>
-                  <div className="step-label-container text-center" style={{ marginTop: '1rem' }}>
-                    <h3 className="font-semibold text-base">{step.label}</h3>
-                  </div>
-                </div>
-              );
-            })}
+                    <Icon size={18} />
+                    <span>{step.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </section>
 

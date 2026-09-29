@@ -9,26 +9,29 @@ export default function ValidateView() {
         <button className="btn btn-primary">Run Validation Suite</button>
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
-        <div className="card text-center flex-col items-center justify-center">
-          <ShieldCheck size={48} color="var(--color-step-execute)" style={{ marginBottom: '1rem' }} />
-          <h4 className="text-lg font-bold">HIPAA Compliance</h4>
-          <p className="text-sm text-muted">All claims meet standard requirements.</p>
-          <span className="text-green-600 font-bold mt-2">100% Passed</span>
+      <div className="grid grid-cols-4 gap-6">
+        <div className="card text-center flex-col items-center justify-center p-4">
+          <ShieldCheck size={40} color="var(--color-step-execute)" style={{ marginBottom: '1rem' }} />
+          <h4 className="text-md font-bold">HIPAA Compliance</h4>
+          <span className="text-green-600 font-bold mt-2 text-sm">100% Passed</span>
         </div>
 
-        <div className="card text-center flex-col items-center justify-center">
-          <CheckCircle size={48} color="var(--color-step-execute)" style={{ marginBottom: '1rem' }} />
-          <h4 className="text-lg font-bold">837 Structure</h4>
-          <p className="text-sm text-muted">Segment-level preparation validated.</p>
-          <span className="text-green-600 font-bold mt-2">100% Passed</span>
+        <div className="card text-center flex-col items-center justify-center p-4">
+          <CheckCircle size={40} color="var(--color-step-execute)" style={{ marginBottom: '1rem' }} />
+          <h4 className="text-md font-bold">837 Structure</h4>
+          <span className="text-green-600 font-bold mt-2 text-sm">100% Passed</span>
         </div>
 
-        <div className="card text-center flex-col items-center justify-center">
-          <AlertTriangle size={48} color="var(--color-step-validate)" style={{ marginBottom: '1rem' }} />
-          <h4 className="text-lg font-bold">Payer Specific Rules</h4>
-          <p className="text-sm text-muted">Custom business rules check.</p>
-          <span className="text-orange-600 font-bold mt-2">2 Warnings</span>
+        <div className="card text-center flex-col items-center justify-center p-4">
+          <AlertTriangle size={40} color="var(--color-step-validate)" style={{ marginBottom: '1rem' }} />
+          <h4 className="text-md font-bold">Payer Specific Rules</h4>
+          <span className="text-orange-600 font-bold mt-2 text-sm">2 Warnings</span>
+        </div>
+
+        <div className="card text-center flex-col items-center justify-center p-4">
+          <ShieldCheck size={40} color="var(--color-step-execute)" style={{ marginBottom: '1rem' }} />
+          <h4 className="text-md font-bold">Test Management</h4>
+          <span className="text-green-600 font-bold mt-2 text-sm">Regression Suites Linked</span>
         </div>
       </div>
 
