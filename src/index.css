@@ -179,6 +179,24 @@ button {
   font-size: 0.875rem;
 }
 
+/* Forms */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--color-background);
+  color: var(--color-text-main);
+  transition: all var(--transition-fast);
+  outline: none;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.15);
+}
+
 /* Specific UI layout */
 .app-layout {
   display: flex;

@@ -4,25 +4,25 @@ import { Search, Database, Copy } from 'lucide-react';
 export default function PrepareView() {
   return (
     <div className="view-container animate-fade-in">
-      <div className="grid grid-cols-3 gap-8">
-        <div className="card">
-          <div className="flex items-center gap-2 mb-4">
+      <div className="grid grid-cols-4 gap-8">
+        <div className="card col-span-1 flex flex-col h-full">
+          <div className="flex items-center gap-2 mb-6">
             <Search className="text-primary" />
-            <h3 className="text-xl font-bold">Search Claims</h3>
+            <h3 className="text-lg font-bold">Search Claims</h3>
           </div>
-          <div className="flex-col gap-3">
-            <input type="text" placeholder="Claim ID, Member ID, or Provider NPI..." className="p-2 border rounded w-full" style={{ borderColor: 'var(--border-color)' }} />
-            <button className="btn btn-outline w-full">Search</button>
+          <div className="flex-col gap-4">
+            <input type="text" placeholder="Claim ID, Member ID..." className="form-input mb-3" />
+            <button className="btn btn-primary w-full">Search</button>
             
-            <div className="mt-4 pt-4 border-t" style={{ borderColor: 'var(--border-color)' }}>
-               <h4 className="font-semibold text-sm mb-2 text-muted">Advanced Generation</h4>
-               <button className="btn btn-outline w-full text-sm mb-2">Bulk Claims Generation</button>
-               <button className="btn btn-outline w-full text-sm">837 Segment-level Preparation</button>
+            <div className="mt-6 pt-6 border-t flex flex-col gap-3" style={{ borderColor: 'var(--border-color)' }}>
+               <h4 className="font-semibold text-sm text-muted">Advanced Actions</h4>
+               <button className="btn btn-outline w-full text-sm">Bulk Generation</button>
+               <button className="btn btn-outline w-full text-sm">837 Segment Preparation</button>
             </div>
           </div>
         </div>
 
-        <div className="card col-span-2">
+        <div className="card col-span-3">
            <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2">
                 <Database className="text-primary" />
