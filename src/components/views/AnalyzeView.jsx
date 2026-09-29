@@ -104,10 +104,10 @@ export default function AnalyzeView() {
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} dx={-10} tickFormatter={(val) => \`$\${val}\`} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} dx={-10} tickFormatter={(val) => '$' + val} />
                 <Tooltip 
                    contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: 'var(--shadow-md)' }}
-                   formatter={(value) => [\`$\${value}\`]}
+                   formatter={(value) => ['$' + value]}
                 />
                 <Legend verticalAlign="top" height={36}/>
                 <Area type="monotone" dataKey="expected" name="Expected Payment" stroke="#1e40af" strokeWidth={3} fillOpacity={1} fill="url(#colorExpected)" />
@@ -134,7 +134,7 @@ export default function AnalyzeView() {
                   stroke="none"
                 >
                   {rootCauseData.map((entry, index) => (
-                    <Cell key={\`cell-\${index}\`} fill={COLORS[index % COLORS.length]} />
+                    <Cell key={'cell-' + index} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
                 <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: 'var(--shadow-md)' }} />
