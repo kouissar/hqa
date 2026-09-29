@@ -72,7 +72,7 @@ export default function GenerateView() {
                <Code className="text-primary" />
                <h4 className="font-bold">BDD Feature File Preview</h4>
             </div>
-            <button className="text-sm text-primary hover:underline">Edit Spec</button>
+            <button className="btn btn-ghost btn-sm">Edit Spec</button>
           </div>
           <pre className="p-4 rounded text-sm overflow-auto" style={{ backgroundColor: '#1e293b', color: '#e2e8f0', minHeight: '180px' }}>
             <code>

@@ -46,7 +46,7 @@ export default function PrepareView() {
                  <td className="py-3">Professional (837P)</td>
                  <td className="py-3"><span className="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Ready</span></td>
                  <td className="py-3">
-                   <button className="text-primary hover:text-primary-light flex items-center gap-1 text-sm"><Copy size={16}/> Clone / Edit</button>
+                   <button className="btn btn-ghost btn-sm flex items-center gap-1"><Copy size={16}/> Clone / Edit</button>
                  </td>
                </tr>
                <tr>
@@ -54,7 +54,7 @@ export default function PrepareView() {
                  <td className="py-3">Institutional (837I)</td>
                  <td className="py-3"><span className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-sm">Draft (Missing Segments)</span></td>
                  <td className="py-3">
-                   <button className="text-primary hover:text-primary-light flex items-center gap-1 text-sm"><Copy size={16}/> Clone / Edit</button>
+                   <button className="btn btn-ghost btn-sm flex items-center gap-1"><Copy size={16}/> Clone / Edit</button>
                  </td>
                </tr>
              </tbody>

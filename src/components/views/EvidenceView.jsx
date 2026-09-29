@@ -38,7 +38,7 @@ export default function EvidenceView() {
              <li className="flex justify-between items-center text-sm pb-2" style={{ borderBottom: '1px solid var(--border-color)' }}>
                 <span className="font-semibold text-red-600">DEF-102</span>
                 <span className="text-muted">Payment variance on CLM-82911</span>
-                <button className="text-primary hover:underline">View in Jira</button>
+                <button className="btn btn-ghost btn-sm">View in Jira</button>
              </li>
              <li className="flex justify-between items-center text-sm text-muted">
                 No other defects.

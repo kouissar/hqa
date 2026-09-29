@@ -16,7 +16,7 @@ export default function PlanView() {
                   <p className="text-sm text-muted">Synced from Jira - 12 user stories pending test plan.</p>
                 </div>
               </div>
-              <button className="btn btn-outline text-sm">View Jira Epics</button>
+              <button className="btn btn-ghost btn-sm">View Jira Epics</button>
             </div>
             <div className="flex justify-between items-center p-4 border rounded hover:border-primary transition-colors cursor-pointer" style={{ borderColor: 'var(--border-color)', marginTop: '1rem' }}>
               <div className="flex items-center gap-3">
@@ -26,7 +26,7 @@ export default function PlanView() {
                   <p className="text-sm text-muted">Benefit plan PDFs, coverage docs, & historical claims data.</p>
                 </div>
               </div>
-              <button className="btn btn-outline text-sm">Upload to KB</button>
+              <button className="btn btn-ghost btn-sm">Upload to KB</button>
             </div>
           </div>
         </div>
