@@ -204,49 +204,48 @@ button {
   padding: 3rem 0;
 }
 
-/* Workflow Stepper */
-.workflow-stepper {
-  position: relative;
-  margin-top: 2rem;
-}
-
-.stepper-track {
-  position: absolute;
-  top: 32px;
-  left: 5%;
-  right: 5%;
-  height: 2px;
-  background-color: var(--border-color);
-  z-index: 0;
-}
-
-.step-item {
-  position: relative;
-  z-index: 1;
+/* Modern Workflow Tabs */
+.workflow-tabs-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.modern-tabs {
+  display: flex;
   align-items: center;
+  background: var(--color-surface);
+  padding: 0.5rem;
+  border-radius: 9999px; /* Pill shape */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color);
+  width: fit-content;
+  margin: 0 auto;
+  gap: 0.25rem;
+}
+
+.modern-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
   cursor: pointer;
-  transition: transform var(--transition-fast);
+  outline: none;
 }
 
-.step-item:hover {
-  transform: translateY(-5px);
+.modern-tab:hover:not(.active) {
+  background: var(--color-surface-hover) !important;
+  color: var(--color-text-main) !important;
 }
 
-.step-icon-wrapper {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 2px solid;
-  background-color: var(--color-surface);
-  transition: all var(--transition-normal);
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.step-item.active .step-icon-wrapper {
-  transform: scale(1.1);
+.modern-tab.active {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
 }
 
 /* Step content specifics */

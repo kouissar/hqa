@@ -68,36 +68,27 @@ function App() {
           </p>
         </section>
 
-        {/* Workflow Tabs */}
-        <section className="workflow-tabs">
-          <div className="flex items-center justify-between border-b" style={{ borderColor: 'var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
-            <div className="flex overflow-x-auto w-full">
-              {WORKFLOW_STEPS.map((step) => {
-                const Icon = step.icon;
-                const isActive = activeStep === step.id;
-                return (
-                  <button 
-                    key={step.id} 
-                    className={`tab-item flex items-center gap-2 ${isActive ? 'active' : ''}`}
-                    onClick={() => setActiveStep(step.id)}
-                    style={{
-                      padding: '1rem 1.5rem',
-                      borderBottom: isActive ? `3px solid ${step.color}` : '3px solid transparent',
-                      color: isActive ? step.color : 'var(--color-text-muted)',
-                      fontWeight: isActive ? '600' : '500',
-                      backgroundColor: isActive ? `${step.color}0A` : 'transparent',
-                      transition: 'all var(--transition-fast)',
-                      flex: 1,
-                      justifyContent: 'center',
-                      outline: 'none'
-                    }}
-                  >
-                    <Icon size={18} />
-                    <span>{step.label}</span>
-                  </button>
-                );
-              })}
-            </div>
+        {/* Modern Workflow Tabs */}
+        <section className="workflow-tabs-container" style={{ margin: '2rem 0' }}>
+          <div className="modern-tabs">
+            {WORKFLOW_STEPS.map((step) => {
+              const Icon = step.icon;
+              const isActive = activeStep === step.id;
+              return (
+                <button 
+                  key={step.id} 
+                  className={`modern-tab ${isActive ? 'active' : ''}`}
+                  onClick={() => setActiveStep(step.id)}
+                  style={{
+                    backgroundColor: isActive ? step.color : 'transparent',
+                    color: isActive ? 'white' : 'var(--color-text-muted)'
+                  }}
+                >
+                  <Icon size={18} className="tab-icon" style={{ opacity: isActive ? 1 : 0.7 }} />
+                  <span>{step.label}</span>
+                </button>
+              );
+            })}
           </div>
         </section>
 
