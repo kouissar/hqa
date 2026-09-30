@@ -94,74 +94,93 @@ export default function GenerateView() {
         </div>
       </div>
 
-      {/* AI Chatbot Floating Action Button & Panel */}
-      <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 50 }}>
+      {/* AI Chatbot Floating Action Button & Panel - Left Aligned & Modernized */}
+      <div style={{ position: 'fixed', bottom: '2rem', left: '2rem', zIndex: 50 }}>
         {isChatOpen && (
-          <div className="flex flex-col mb-4 animate-fade-in" style={{ width: '400px', height: '600px', borderRadius: '16px', overflow: 'hidden', backgroundColor: 'var(--color-surface)', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', border: '1px solid var(--border-color)' }}>
-            {/* Header */}
-            <div className="p-4 flex justify-between items-center" style={{ borderBottom: '1px solid var(--border-color)', backgroundColor: 'var(--color-surface)' }}>
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-full" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>
-                   <Bot size={20} />
+          <div className="flex flex-col mb-4 animate-fade-in" style={{ 
+            width: '420px', 
+            height: '600px', 
+            borderRadius: '24px', 
+            overflow: 'hidden', 
+            backgroundColor: '#ffffff', 
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0,0,0,0.05)', 
+            fontFamily: 'Inter, system-ui, sans-serif'
+          }}>
+            {/* Header - Glassmorphism Style */}
+            <div className="p-5 flex justify-between items-center" style={{ 
+              background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)', 
+              color: '#ffffff'
+            }}>
+              <div className="flex items-center gap-4">
+                <div className="p-2 rounded-xl flex items-center justify-center bg-white/20 backdrop-blur-sm">
+                   <Bot size={24} color="#ffffff" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-md leading-tight">HQA Agent</h4>
-                  <span className="text-xs text-green-500 font-semibold flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span> Online</span>
+                  <h4 className="font-bold text-lg leading-tight tracking-tight text-white m-0">HQA Agent</h4>
+                  <span className="text-xs font-medium flex items-center gap-1.5 opacity-90 text-blue-100">
+                    <span className="w-2 h-2 rounded-full bg-green-400 inline-block"></span> Online
+                  </span>
                 </div>
               </div>
-              <button onClick={() => setIsChatOpen(false)} className="p-2 rounded-full hover:bg-slate-100 transition-colors text-muted"><X size={20} /></button>
+              <button onClick={() => setIsChatOpen(false)} className="p-2 rounded-full hover:bg-white/20 transition-colors text-white">
+                <X size={20} />
+              </button>
             </div>
-            {/* Messages */}
-            <div className="flex-1 p-5 overflow-y-auto flex flex-col gap-5 text-sm" style={{ backgroundColor: 'var(--color-background)' }}>
+            
+            {/* Messages Area */}
+            <div className="flex-1 p-6 overflow-y-auto flex flex-col gap-6" style={{ backgroundColor: '#f8fafc' }}>
               
-              <div className="self-start flex gap-2 w-full max-w-[90%]">
-                 <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>
+              <div className="self-start flex gap-3 w-full max-w-[90%]">
+                 <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)', color: 'white' }}>
                     <Bot size={16} />
                  </div>
-                 <div className="p-3 rounded-2xl rounded-tl-none" style={{ backgroundColor: 'white', border: '1px solid var(--border-color)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)', color: 'var(--color-text-main)' }}>
+                 <div className="p-4 rounded-2xl rounded-tl-none shadow-sm" style={{ backgroundColor: '#ffffff', color: '#334155', fontSize: '14px', lineHeight: '1.6' }}>
                    Hi! I'm your HQA AI Assistant. I can help you query the Knowledge Base, review existing test scenarios, and automatically generate BDD scenarios for any Jira requirements. How can I assist you?
                  </div>
               </div>
 
-              <div className="self-end flex gap-2 w-full max-w-[90%] justify-end">
-                 <div className="p-3 rounded-2xl rounded-tr-none text-white shadow-sm" style={{ backgroundColor: 'var(--color-primary)' }}>
+              <div className="self-end flex gap-3 w-full max-w-[90%] justify-end">
+                 <div className="p-4 rounded-2xl rounded-tr-none shadow-md" style={{ backgroundColor: '#2563eb', color: '#ffffff', fontSize: '14px', lineHeight: '1.6' }}>
                    Can you generate scenarios for Jira Epic JRA-102 based on the Inpatient Claims KB?
                  </div>
               </div>
 
-              <div className="self-start flex gap-2 w-full max-w-[90%]">
-                 <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>
+              <div className="self-start flex gap-3 w-full max-w-[90%]">
+                 <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)', color: 'white' }}>
                     <Bot size={16} />
                  </div>
-                 <div className="p-3 rounded-2xl rounded-tl-none" style={{ backgroundColor: 'white', border: '1px solid var(--border-color)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)', color: 'var(--color-text-main)' }}>
-                   Certainly. I've analyzed <span className="font-semibold text-primary">JRA-102</span> and cross-referenced it with the <span className="font-semibold text-primary">Inpatient Claims KB</span>. I've generated 3 new scenarios focusing on Medicare Primary and COB edge cases. You can see them updated in the BDD panel on the left.
+                 <div className="p-4 rounded-2xl rounded-tl-none shadow-sm" style={{ backgroundColor: '#ffffff', color: '#334155', fontSize: '14px', lineHeight: '1.6' }}>
+                   Certainly. I've analyzed <span className="font-semibold text-blue-600">JRA-102</span> and cross-referenced it with the <span className="font-semibold text-blue-600">Inpatient Claims KB</span>. I've generated 3 new scenarios focusing on Medicare Primary and COB edge cases. You can see them updated in the BDD panel on the right.
                  </div>
               </div>
 
             </div>
-            {/* Input */}
-            <div className="p-4" style={{ backgroundColor: 'var(--color-surface)', borderTop: '1px solid var(--border-color)' }}>
-              <div className="flex gap-2 items-center p-1 rounded-full" style={{ border: '1px solid var(--border-color)', backgroundColor: 'var(--color-background)' }}>
-                <input type="text" placeholder="Ask the HQA Agent..." className="text-sm py-2 px-4 flex-1 bg-transparent outline-none" style={{ color: 'var(--color-text-main)' }} />
-                <button className="text-white p-2 rounded-full transition-all hover:scale-105 shadow-sm" style={{ backgroundColor: 'var(--color-primary)' }}><Send size={18} /></button>
+            
+            {/* Modern Input Area */}
+            <div className="p-5" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #f1f5f9' }}>
+              <div className="flex gap-3 items-center p-1.5 rounded-full" style={{ backgroundColor: '#f1f5f9' }}>
+                <input type="text" placeholder="Message HQA Agent..." className="text-sm py-2 px-4 flex-1 bg-transparent outline-none border-none" style={{ color: '#0f172a' }} />
+                <button className="p-2.5 rounded-full transition-transform hover:scale-105" style={{ backgroundColor: '#2563eb', color: '#ffffff' }}>
+                  <Send size={18} />
+                </button>
               </div>
-              <div className="flex justify-center mt-2 gap-1 items-center text-xs text-muted">
-                 <Sparkles size={12} className="text-primary"/> AI can make mistakes. Verify scenarios before testing.
+              <div className="flex justify-center mt-3 gap-1.5 items-center text-xs text-slate-400">
+                 <Sparkles size={12} className="text-blue-500"/> AI can make mistakes. Verify scenarios before testing.
               </div>
             </div>
           </div>
         )}
         
         {!isChatOpen && (
-          <div className="flex flex-col items-end gap-2">
-            <div className="bg-white px-3 py-2 rounded-lg shadow-md text-sm font-semibold text-slate-700 animate-fade-in relative" style={{ border: '1px solid var(--border-color)' }}>
+          <div className="flex flex-col items-start gap-3">
+            <div className="bg-white px-4 py-2.5 rounded-xl shadow-lg text-sm font-bold text-slate-700 animate-fade-in relative ml-2" style={{ border: '1px solid #e2e8f0' }}>
               Need help? Ask AI!
-              <div className="absolute w-3 h-3 bg-white transform rotate-45" style={{ bottom: '-6px', right: '24px', borderRight: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}></div>
+              <div className="absolute w-3 h-3 bg-white transform rotate-45" style={{ bottom: '-6px', left: '24px', borderRight: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}></div>
             </div>
             <button 
               onClick={() => setIsChatOpen(true)}
-              className="chatbot-fab text-white p-4 rounded-full shadow-xl transition-all flex items-center justify-center cursor-pointer"
-              style={{ backgroundColor: 'var(--color-primary)', width: '64px', height: '64px' }}
+              className="chatbot-fab p-4 rounded-full shadow-2xl transition-all flex items-center justify-center cursor-pointer"
+              style={{ background: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)', color: '#ffffff', width: '68px', height: '68px' }}
             >
               <Bot size={32} />
             </button>
