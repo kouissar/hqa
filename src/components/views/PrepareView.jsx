@@ -27,15 +27,18 @@ export default function PrepareView() {
           const isActive = activeSubTab === tab.id;
           const isPast = tabs.findIndex(t => t.id === activeSubTab) > index;
           
-          let styling = "text-muted";
-          if (isActive) styling = "text-primary font-bold bg-blue-50 px-3 py-1 rounded-full border border-blue-200";
+          let styling = "text-muted hover:text-primary cursor-pointer";
+          if (isActive) styling = "text-primary font-bold bg-blue-50 px-3 py-1 rounded-full border border-blue-200 cursor-default";
           else if (isPast) styling = "text-slate-800 font-semibold cursor-pointer hover:underline";
 
           return (
             <React.Fragment key={tab.id}>
               <div 
-                className={"flex items-center gap-2 " + styling}
-                onClick={() => { if (isPast || (selectedClaim && tab.id === 'clone')) setActiveSubTab(tab.id); }}
+                className={"flex items-center gap-2 transition-all " + styling}
+                onClick={() => { 
+                  if (!selectedClaim) setSelectedClaim('CLM-82910');
+                  setActiveSubTab(tab.id); 
+                }}
               >
                 {isPast && <CheckCircle size={16} className="text-green-500" />}
                 {tab.label}
@@ -111,7 +114,7 @@ export default function PrepareView() {
   const renderClone = () => (
     <div className="animate-fade-in flex flex-col gap-6">
       <div className="card w-full border-l-4" style={{ borderLeftColor: 'var(--color-primary)' }}>
-        <h3 className="text-lg font-bold mb-2">Configure Clones for Base Claim: <span className="text-primary">{selectedClaim}</span></h3>
+        <h3 className="text-lg font-bold mb-2">Configure Clones for Base Claim: <span className="text-primary">{selectedClaim || 'CLM-82910'}</span></h3>
         <p className="text-sm text-muted">Generate multiple variations of this base claim using synthetic data substitution.</p>
       </div>
 
@@ -152,7 +155,7 @@ export default function PrepareView() {
            <div>
              <h4 className="font-bold mb-4">Summary</h4>
              <ul className="text-sm flex flex-col gap-3">
-               <li className="flex justify-between border-b pb-2" style={{ borderColor: 'var(--border-color)' }}><span>Base Claim:</span> <span className="font-semibold text-primary">{selectedClaim}</span></li>
+               <li className="flex justify-between border-b pb-2" style={{ borderColor: 'var(--border-color)' }}><span>Base Claim:</span> <span className="font-semibold text-primary">{selectedClaim || 'CLM-82910'}</span></li>
                <li className="flex justify-between border-b pb-2" style={{ borderColor: 'var(--border-color)' }}><span>Total Clones to Generate:</span> <span className="font-semibold">5</span></li>
                <li className="flex justify-between border-b pb-2" style={{ borderColor: 'var(--border-color)' }}><span>Data Action:</span> <span className="font-semibold text-green-600">Synthetic Permutations Applied</span></li>
              </ul>
@@ -178,7 +181,7 @@ export default function PrepareView() {
            {[1,2,3,4,5].map(num => (
              <div key={num} className={"p-3 mb-2 rounded-lg cursor-pointer border transition-all " + (num === 1 ? 'border-primary bg-blue-50' : 'border-transparent bg-slate-50 hover:bg-slate-100')}>
                <div className="flex justify-between items-center mb-1">
-                 <span className="font-bold text-sm text-primary">{selectedClaim}-C0{num}</span>
+                 <span className="font-bold text-sm text-primary">{selectedClaim || 'CLM-82910'}-C0{num}</span>
                  <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded font-semibold">Valid</span>
                </div>
                <div className="text-xs text-muted truncate">Subscriber: SYN-MEM-{8000+num}</div>
@@ -186,52 +189,70 @@ export default function PrepareView() {
            ))}
         </div>
         <div className="pt-4 mt-2 border-t" style={{ borderColor: 'var(--border-color)' }}>
-          <button className="btn btn-primary w-full shadow-lg">Finalize & Load to Execute</button>
+          <button className="btn btn-primary w-full shadow-lg">Load to Engine</button>
         </div>
       </div>
 
-      {/* Main Panel: EDI / JSON Editor */}
-      <div className="card w-2/3 flex flex-col p-0 overflow-hidden" style={{ backgroundColor: '#1e293b' }}>
-        <div className="p-4 flex justify-between items-center" style={{ backgroundColor: '#0f172a', color: 'white', borderBottom: '1px solid #334155' }}>
+      {/* Main Panel: Structured Form Editor */}
+      <div className="card w-2/3 flex flex-col p-0 overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
+        <div className="p-4 flex justify-between items-center" style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)' }}>
           <div className="flex items-center gap-2">
-             <FileEdit size={16} className="text-blue-400"/>
-             <span className="font-semibold text-sm">Editor: {selectedClaim}-C01 (837I Raw Segments)</span>
+             <FileEdit size={16} className="text-primary"/>
+             <span className="font-semibold text-sm">Editing: {selectedClaim || 'CLM-82910'}-C01</span>
           </div>
-          <div className="flex gap-2">
-            <button className="btn btn-ghost btn-sm text-blue-300 hover:text-white">Format</button>
-            <button className="btn btn-ghost btn-sm text-blue-300 hover:text-white">Validate</button>
+          <div className="flex gap-2 bg-slate-200 p-1 rounded-lg">
+            <button className="px-3 py-1 text-xs font-bold rounded bg-white shadow-sm text-primary">Structured Form</button>
+            <button className="px-3 py-1 text-xs font-semibold text-muted hover:text-slate-700 transition-colors">Raw X12 (837)</button>
           </div>
         </div>
-        <div className="p-4 flex-1 overflow-auto text-sm" style={{ color: '#e2e8f0', fontFamily: 'monospace', lineHeight: '1.6' }}>
-          <pre>
-{`ISA*00*          *00*          *ZZ*SUBMITTER ID   *ZZ*RECEIVER ID    *231024*1230*^*00501*000000001*0*T*:~
-GS*HC*SUBMITTER ID*RECEIVER ID*20231024*1230*1*X*005010X223A2~
-ST*837*0001*005010X223A2~
-BHT*0019*00*123456789*20231024*1230*CH~
-NM1*41*2*JOHN DOE CLINIC*****46*123456789~
-PER*IC*JOHN DOE*TE*5555555555~
-NM1*40*2*PAYER NAME*****46*987654321~
-HL*1**20*1~
-PRV*BI*PXC*207Q00000X~
-NM1*85*2*JOHN DOE CLINIC*****XX*1234567890~
-N3*123 MAIN ST~
-N4*ANYTOWN*CA*12345~
-REF*EI*123456789~
-HL*2*1*22*0~
-SBR*P*18*******CI~
-NM1*IL*1*SMITH*JOHN****MI*SYN-MEM-8001~
-N3*456 OAK ST~
-N4*OTHERTOWN*CA*67890~
-DMG*D8*19800101*M~
-NM1*PR*2*PAYER NAME*****PI*987654321~
-CLM*${selectedClaim}-C01*500***11:B:1*Y*A*Y*I~
-HI*BK:8901~
-LX*1~
-SV1*HC:99213*100*UN*1***1~
-DTP*472*D8*20231024~`}
-          </pre>
+
+        <div className="p-6 flex-1 overflow-auto text-sm">
+           <h4 className="font-bold text-lg mb-4 text-slate-800">Claim Header (837I)</h4>
+           <div className="grid grid-cols-2 gap-5 mb-8">
+              <div>
+                <label className="text-xs font-semibold text-slate-500 block mb-1">Billing Provider NPI (NM109)</label>
+                <input type="text" className="form-input" defaultValue="123456789" />
+              </div>
+              <div>
+                <label className="text-xs font-semibold text-slate-500 block mb-1">Subscriber ID (NM109)</label>
+                <input type="text" className="form-input" defaultValue="SYN-MEM-8001" />
+              </div>
+              <div>
+                <label className="text-xs font-semibold text-slate-500 block mb-1">Total Claim Charge (CLM02)</label>
+                <input type="text" className="form-input font-bold text-slate-800" defaultValue="$500.00" />
+              </div>
+              <div>
+                <label className="text-xs font-semibold text-slate-500 block mb-1">Principal Diagnosis (HI01-2)</label>
+                <input type="text" className="form-input" defaultValue="J01.90" />
+              </div>
+           </div>
+
+           <h4 className="font-bold text-lg mb-4 border-t pt-6 text-slate-800" style={{ borderColor: 'var(--border-color)' }}>Service Lines (SV2)</h4>
+           <table className="w-full text-left border-collapse">
+              <thead className="bg-slate-50 border" style={{ borderColor: 'var(--border-color)' }}>
+                <tr>
+                  <th className="p-3 text-xs text-slate-500 font-bold uppercase tracking-wider">Line</th>
+                  <th className="p-3 text-xs text-slate-500 font-bold uppercase tracking-wider">Revenue Code</th>
+                  <th className="p-3 text-xs text-slate-500 font-bold uppercase tracking-wider">HCPCS</th>
+                  <th className="p-3 text-xs text-slate-500 font-bold uppercase tracking-wider">Charge</th>
+                </tr>
+              </thead>
+              <tbody className="border" style={{ borderColor: 'var(--border-color)' }}>
+                <tr className="border-b" style={{ borderColor: 'var(--border-color)' }}>
+                  <td className="p-3 font-semibold text-slate-700">1</td>
+                  <td className="p-3"><input type="text" className="form-input py-1.5 px-2" defaultValue="0450" /></td>
+                  <td className="p-3"><input type="text" className="form-input py-1.5 px-2" defaultValue="99283" /></td>
+                  <td className="p-3"><input type="text" className="form-input py-1.5 px-2 font-semibold" defaultValue="$300.00" /></td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-semibold text-slate-700">2</td>
+                  <td className="p-3"><input type="text" className="form-input py-1.5 px-2" defaultValue="0250" /></td>
+                  <td className="p-3"><input type="text" className="form-input py-1.5 px-2" defaultValue="J3490" /></td>
+                  <td className="p-3"><input type="text" className="form-input py-1.5 px-2 font-semibold" defaultValue="$200.00" /></td>
+                </tr>
+              </tbody>
+           </table>
         </div>
-      </div>
     </div>
   );
 
