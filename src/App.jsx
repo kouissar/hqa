@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { 
   FileText, Zap, Search, CheckCircle, 
-  PlayCircle, BarChart2, Shield, Activity 
+  PlayCircle, BarChart2, Shield, Activity,
+  Layers, User, HelpCircle, LogOut
 } from 'lucide-react';
 import './App.css';
 
@@ -41,18 +42,43 @@ function App() {
 
   return (
     <div className="app-layout">
-      <header className="navbar">
+      <header className="navbar shadow-sm" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-color)', padding: '1rem 0' }}>
         <div className="container flex items-center justify-between">
-          <div className="brand flex items-center gap-2">
-            <div className="logo-icon"></div>
-            <h1 className="text-xl font-bold">AQUAONE</h1>
+          
+          {/* Enhanced Logo */}
+          <div className="brand flex items-center gap-3 cursor-pointer">
+            <div className="p-2 rounded-lg flex items-center justify-center shadow-inner" style={{ background: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)', color: 'white' }}>
+              <Layers size={24} fill="currentColor" fillOpacity={0.2} />
+            </div>
+            <h1 className="text-2xl font-black tracking-tight" style={{ color: '#0f172a' }}>Claim QA<span className="text-primary font-light"> Platform</span></h1>
           </div>
-          <nav className="nav-links flex gap-4">
-            <a href="#">QA Teams</a>
-            <a href="#">Business Analysts</a>
-            <a href="#">Test Leads</a>
-            <a href="#">Product Teams</a>
-          </nav>
+
+          {/* Right Side Menu Items */}
+          <div className="flex items-center gap-6">
+            
+            {/* User Profile */}
+            <div className="flex items-center gap-3 pr-6 border-r" style={{ borderColor: 'var(--border-color)' }}>
+              <div className="text-right">
+                <div className="text-sm text-slate-800"><span className="text-slate-500 font-semibold">User:</span> <span className="font-bold">Mike</span></div>
+                <div className="text-xs text-primary"><span className="text-slate-400 font-medium">Role:</span> <span className="font-semibold">QA Engineer</span></div>
+              </div>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#e0e7ff', color: '#4f46e5' }}>
+                <User size={20} />
+              </div>
+            </div>
+
+            {/* Actions */}
+            <nav className="flex items-center gap-3 ml-2">
+              <button className="btn btn-ghost btn-sm flex items-center gap-2 font-semibold">
+                <HelpCircle size={16} /> Help
+              </button>
+              <button className="btn btn-outline btn-sm flex items-center gap-2 text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-200 font-semibold">
+                <LogOut size={16} /> Logout
+              </button>
+            </nav>
+
+          </div>
+
         </div>
       </header>
 
