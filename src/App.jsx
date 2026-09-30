@@ -62,15 +62,12 @@ function App() {
                 <div className="text-sm text-slate-800"><span className="text-slate-500 font-semibold">User:</span> <span className="font-bold">Mike</span></div>
                 <div className="text-xs text-primary"><span className="text-slate-400 font-medium">Role:</span> <span className="font-semibold">QA Engineer</span></div>
               </div>
-              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#e0e7ff', color: '#4f46e5' }}>
-                <User size={20} />
-              </div>
             </div>
 
             {/* Actions */}
             <nav className="flex items-center gap-3 ml-2">
               <button className="btn btn-ghost btn-sm flex items-center gap-2 font-semibold">
-                <HelpCircle size={16} /> Help
+                Documentation
               </button>
               <button className="btn btn-outline btn-sm flex items-center gap-2 text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-200 font-semibold">
                 <LogOut size={16} /> Logout
