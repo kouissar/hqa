@@ -34,7 +34,7 @@ export default function PrepareView() {
           return (
             <React.Fragment key={tab.id}>
               <div 
-                className={\`flex items-center gap-2 \${styling}\`}
+                className={"flex items-center gap-2 " + styling}
                 onClick={() => { if (isPast || (selectedClaim && tab.id === 'clone')) setActiveSubTab(tab.id); }}
               >
                 {isPast && <CheckCircle size={16} className="text-green-500" />}
@@ -176,7 +176,7 @@ export default function PrepareView() {
         </div>
         <div className="flex-1 overflow-y-auto pr-2">
            {[1,2,3,4,5].map(num => (
-             <div key={num} className={\`p-3 mb-2 rounded-lg cursor-pointer border transition-all \${num === 1 ? 'border-primary bg-blue-50' : 'border-transparent bg-slate-50 hover:bg-slate-100'}\`}>
+             <div key={num} className={"p-3 mb-2 rounded-lg cursor-pointer border transition-all " + (num === 1 ? 'border-primary bg-blue-50' : 'border-transparent bg-slate-50 hover:bg-slate-100')}>
                <div className="flex justify-between items-center mb-1">
                  <span className="font-bold text-sm text-primary">{selectedClaim}-C0{num}</span>
                  <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded font-semibold">Valid</span>
